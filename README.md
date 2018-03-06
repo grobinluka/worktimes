@@ -10,7 +10,7 @@ Edited that worktime controller where output will be date DESC.
 date @worktimes = Worktime.all.order("datum DESC")
 ```
 
-Added gem 'devise' and added Users, so you can login.
+Added gem 'devise' generated Users and views, so you can login.
 
 Also added gem 'bootstrap-sass', '~> 3.3.7' and gem 'browser-timezone-rails' which changes timezone to pc/browser time.
 
