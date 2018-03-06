@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-offset-3">
+      <div class="panel panel-primary text_center">
+        <div class="panel-heading font-size_a">Worktime</div>
+        <table class="center overview">
+          <tr>
+            <td>
+              <div class="field">
+                Absence
+              </div>
+            </td>
+            <td>
+              <label class="switch">
+                <input type="checkbox" value="On" id="onoff" onclick="onoff();">
+                <span class="slider round"></span>
+              </label>
+              <%= form_for(@worktime) do |f| %>
+                <% if @worktime.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@worktime.errors.count, "error") %> prohibited this worktime from being saved:</h2>
+                    <ul>
+                      <% @worktime.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    </ul>
+                  </div>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <div class="field">
+                <%= f.label :Arrival %>
+              </div>
+            </td>
+            <td>
+              <div class="field">
+                <%= f.time_select :prihod, :default => {:hour => '0', :minute => '0'} %>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <%= f.label :Leave %>
+            </td>
+            <td>
+              <%= f.time_select :odhod %>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <div class="field">
+                <%= f.label :Hours %>
+              </div>
+            </td>
+            <td>
+              <%= f.number_field :ure %>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <div class="field">
+                <%= f.label :Work %>
+              </div>
+            </td>
+            <td>
+              <%= f.text_area :work %>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <div class="field">
+                <%= f.label :Comment %>
+              </div>
+            </td>
+            <td>
+              <%= f.text_area :opombe %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="absence" style="display:none">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-sm-offset-3">
+        <div class="panel panel-primary text_center">
+          <div class="panel-heading font-size_a">
+            Absence
+          </div>
+          <table class="center overview">
+            <tr>
+              <td>
+                <div class="field clear_float">
+                  <%= f.label :"Reason for absence" %>
+                </div>
+              </td>
+              <td>
+                <%= f.text_area :razlog_odhoda %>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div class="field">
+                  <%= f.label :From %>
+                </div>
+              </td>
+              <td>
+                <%= f.time_select :odhod_r, :default => {:hour => '0', :minute => '0'} %>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div class="field">
+                  <%= f.label :To %>
+                </div>
+              </td>
+              <td>
+                <%= f.time_select :prihod_r, :default => {:hour => '0', :minute => '0'} %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-offset-3">
+      <div class="actions">
+          <%= f.submit "Post", class:"btn btn-warning btn_warning_after float_left"%>
+          <%= link_to 'Back', worktimes_path, class:"btn btn-warning btn_warning_after float_right" %>
+      </div>
+        <% end %>
+    </div>
+  </div>
+</div>

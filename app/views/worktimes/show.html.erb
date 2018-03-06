@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-sm-offset-3">
+        <div class="panel panel-primary text_center">
+          <div class="panel-heading font-size_a">Overview</div>
+            <table class="center overview">
+              <tr>
+                <td>
+                  <strong>Date:</strong>
+                </td>
+                <td>
+                  <%= @worktime.datum.strftime("%d/%m/%y") %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                    <strong>Full name:</strong>
+                </td>
+                <td>
+                  <%= @worktime.user.ime %>&nbsp;<%= @worktime.user.priimek %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>Arrival:</strong>
+                </td>
+                <td>
+                  <%= @worktime.prihod.strftime("%H:%M") %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>Leave:</strong>
+                </td>
+                <td>
+                  <%= @worktime.odhod.strftime("%H:%M") %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>Work:</strong>
+                </td>
+                <td>
+                  <%= @worktime.work %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>Hours:</strong>
+                </td>
+                <td>
+                  <%= @worktime.ure %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>Reason for absence:</strong>
+                </td>
+                <td>
+                  <%= @worktime.razlog_odhoda %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>From:</strong>
+                </td>
+                <td>
+                  <%= @worktime.odhod_r.strftime("%H:%M") %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>To:</strong>
+                </td>
+                <td>
+                  <%= @worktime.prihod_r.strftime("%H:%M") %>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>
+                  <strong>Comment:</strong>
+                </td>
+                <td>
+                  <%= @worktime.opombe %>
+                </td>
+              </tr>
+            </table>
+        </div>
+        <%= link_to 'Back', worktimes_path, class:"btn btn-warning btn_warning_after float_right" %>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+      <h1>Todays Work Evidence</h1>
+        <div class="panel-body">
+            <table class="center today_work">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Full name</th>
+                    <th>Arrival</th>
+                    <th>Leave</th>
+                    <th>Work</th>
+                    <th>Hours</th>
+                    <th>Comment</th>
+                    <th>Reason for absence</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th colspan="5"></th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                <% @worktimes.each do |worktime| %>
+                  <% if Date.current == worktime.datum %>
+                    <tr>
+                      <td><%= worktime.datum.strftime("%d/%m/%y") %></td>
+                      <td><%= worktime.user.ime %> <%= worktime.user.priimek %></td>
+                      <td><%= worktime.prihod.strftime("%H:%M") %></td>
+                      <td><%= worktime.odhod.strftime("%H:%M") %></td>
+                      <td><%= worktime.work %></td>
+                      <td><%= worktime.ure %></td>
+                      <td><%= worktime.opombe %></td>
+                      
+                      <% if worktime.razlog_odhoda == "" %>
+                        <td>------------/------------</td>
+                      <% else %>
+                        <td><%= worktime.razlog_odhoda %></td>
+                      <% end %>
+                      
+                      <% if worktime.odhod_r.strftime("%H:%M") == "00:00" %>
+                        <td>--/--</td>
+                        <td>--/--</td>
+                      <% else %>
+                        <td><%= worktime.odhod_r.strftime("%H:%M") %></td>
+                        <td><%= worktime.prihod_r.strftime("%H:%M") %></td>
+                      <% end %>
+                      
+                      <td><%= link_to 'Show', worktime %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+        <%= yield %>
+        <hr>
+        <%= link_to 'Add new', new_worktime_path, class: "btn btn-warning btn_warning_after" %>
+    </div>
+</div>

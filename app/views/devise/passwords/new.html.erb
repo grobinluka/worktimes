@@ -1,0 +1,26 @@
+<div class="container center">
+ <div class="row">
+      <div class="col-xs-6 col-sm-offset-3">
+          <div class="panel panel-primary text_center">
+              <div class="panel-heading font-size_a">Forgot your password?</div>
+              <div class="panel-body row_boxshadow">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                <%= devise_error_messages! %>
+                
+                <div class="field margin_bottom input_size">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                </div>
+
+                <div class="actions margin_bottom" id="signup_button">
+                  <%= f.submit "Recover" %>
+                </div>
+                
+                <% end %>
+                <hr>
+                <%= render "devise/shared/links" %>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
