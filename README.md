@@ -24,4 +24,5 @@ Profile displayed profile information and all of work time posts a current_user 
 
 If his admin, it also displays all other users posts where you can delete and edit them.
 
-Also added some bootstrap css lines for a better look!
+Organized views and links so the application will look better, also added boostrap css lines for a better look!
+
